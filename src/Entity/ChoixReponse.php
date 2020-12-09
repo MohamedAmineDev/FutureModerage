@@ -22,6 +22,11 @@ class ChoixReponse
      */
     private $text;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=QuestionChoixMultiples::class, inversedBy="choix")
+     */
+    private $questionChoixMultiples;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +40,18 @@ class ChoixReponse
     public function setText(string $text): self
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    public function getQuestionChoixMultiples(): ?QuestionChoixMultiples
+    {
+        return $this->questionChoixMultiples;
+    }
+
+    public function setQuestionChoixMultiples(?QuestionChoixMultiples $questionChoixMultiples): self
+    {
+        $this->questionChoixMultiples = $questionChoixMultiples;
 
         return $this;
     }
